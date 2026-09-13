@@ -120,18 +120,22 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        /* Slide 9: Form Buku Tamu */
-        .rsvp-container {
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-            width: 85%;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 5vh;
-        }
-    </style>
-/head>
-<body>
+        <!-- SLIDE 9: RSVP -->
+    <div class="section-wrapper" id="slide9">
+        <video class="bg-media" autoplay loop muted playsinline preload="auto">
+            <source src="9.mp4" type="video/mp4">
+        </video>
+        <div class="content-overlay">
+            <div class="rsvp-container">
+                <h3>Buku Tamu & RSVP</h3>
+                <form id="rsvpForm">
+                    <input type="text" placeholder="Nama Anda" style="width:100%; padding:8px; margin:5px 0;" required>
+                    <textarea placeholder="Ucapan" style="width:100%; padding:8px; margin:5px 0;" rows="3"></textarea>
+                    <button type="submit" style="width:100%; padding:8px; background:#3498db; color:white; border:none; border-radius:5px;">Kirim</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- AUDIO BACKGROUND (DISINIKAN) -->
     <audio id="bg-music" loop preload="auto">

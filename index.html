@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            color: #fff;
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+
+        /* Container Slide Utama */
+        .section-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            scroll-snap-align: start;
+        }
+
+        /* Media Background */
+        .bg-media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* Layer Konten */
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 480px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 8vh;
+            text-align: center;
+        }
+
+        /* Slide 1: Box Nama */
+        .guest-box {
+            background: rgba(255, 255, 255, 0.85);
+            color: #333;
+            padding: 12px 24px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            width: 80%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .guest-box p {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .guest-box h3 {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .btn-open {
+            background: #d4af37;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Slide 5: Countdown Timer */
+        .countdown-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8vh;
+        }
+
+        .timer-box {
+            background: rgba(0, 0, 0, 0.65);
+            padding: 10px;
+            border-radius: 8px;
+            min-width: 60px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Slide 6: Tombol Maps */
+        .btn-map {
+            background: #27ae60;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 6vh;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Slide 9: Form Buku Tamu */
+        .rsvp-container {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            width: 85%;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 5vh;
+        }
+    </style>
+/head>
+<body>
+
+    <!-- AUDIO BACKGROUND (DISINIKAN) -->
+    <audio id="bg-music" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+    <!-- SLIDE 1: COVER -->
+    <div class="section-wrapper" id="slide1">
+        <video class="bg-media" autoplay loop muted playsinline preload="auto">
+            <source src="1.mp4" type="video/mp4">
+        </video>
+        <div class="content-overlay">
+            <div class="guest-box">
+                <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
+                <h3>Di Tempat</h3>
+            </div>
+            <a href="#slide2" class="btn-open" onclick="playAudio()">Buka Undangan</a>
+        </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="section-wrapper" id="slide2">
+        <video class="bg-media" autoplay loop muted playsinline preload="auto">
+            <source src="2.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="section-wrapper" id="slide3">
+        <video class="bg-media" autoplay loop muted playsinline preload="auto">
+            <source src="3.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="section-wrapper" id="slide4">
+        <video class="bg-media" autoplay loop muted playsinline preload="auto">
+            <source src="4.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- SLIDE 5: COUNTDOWN TIMER ADA DI SINI -->
+    <div class="section-wrapper" id="slide5">
+        <video class="bg-media" autoplay loop muted playsinline preload="auto">
+            <source src="5.mp4" type="video/mp4">
+        </video>
+        <div class="content-overlay">
+            <div class="countdown-container">
+                <div class="timer-box"><span id="days">00</span><br><small>Hari</small></div>
+                <div class="timer-box"><span id="hours">00</span><br><small>Jam</small></div>
+                <div class="timer-box"><span id="minutes">00</span><br><small>Menit</small></div>
+                <div class="timer-box"><span id="seconds">00</span><br><small>Detik</small></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: TOMBOL GOOGLE MAPS ADA DI SINI -->
+    <div class="section-wrapper" id="slide6">
+        <video class="bg-media" autoplay loop muted playsinline preload="auto">
+            <source src="6.mp4" type="video/mp4">
+        </video>
+        <div class="content-overlay">
+            <a href="https://maps.app.goo.gl/hDwg6b141xq5TKBx7" target="_blank" class="btn-map">📍 Buka Google Maps</a>
+        </div>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div class="section-wrapper" id="slide7">
+        <video class="bg-media" autoplay loop muted playsinline preload="auto">
+            <source src="7.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- SLIDE 8 -->
+    <div class="section-wrapper" id="slide8">
+        <video class="bg-media" autoplay loop muted playsinline preload="auto">
+            <source src="8.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- SLIDE 9: BACKGROUND GAMBAR & BUKU TAMU -->
+    <div class="section-wrapper" id="slide9">
+        <img src="background.png" class="bg-media" alt="Background RSVP">
+        <div class="content-overlay">
+            <div class="rsvp-container">
+                <h3>Buku Tamu & RSVP</h3>
+                <form id="rsvpForm">
+                    <input type="text" placeholder="Nama Anda" style="width:100%; padding:8px; margin:5px 0;" required>
+                    <textarea placeholder="Ucapan" style="width:100%; padding:8px; margin:5px 0;" rows="3"></textarea>
+                    <button type="submit" style="width:100%; padding:8px; background:#3498db; color:white; border:none; border-radius:5px;">Kirim</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT COUNTDOWN & PEMUTAR MUSIK -->
+    <script>
+        // Target: 28 September 2026 Jam 10:00:00 WIB
+        const weddingDate = new Date(2026, 8, 28, 10, 0, 0).getTime();
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }, 1000);
+
+        // Fungsi Pemutar Musik saat tombol Buka Undangan diklik
+        function playAudio() {
+            const audio = document.getElementById("bg-music");
+            if (audio) {
+                audio.play().then(() => {
+                    console.log("Musik berhasil diputar");
+                }).catch(error => {
+                    console.log("Autoplay diblokir browser: ", error);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
